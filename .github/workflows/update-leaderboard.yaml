@@ -1,0 +1,24 @@
+name: Update Leaderboard
+on:
+  repository_dispatch:
+    types: [update_score]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Update JSON
+        run: |
+          # This script takes the data from the website and adds it to the file
+          echo '${{ github.event.client_payload.data }}' > leaderboard.json
+          
+      - name: Commit and Push
+        run: |
+          git config --global user.name "HydraBot"
+          git config --global user.email "bot@hydra.app"
+          git add leaderboard.json
+          git commit -m "New World Record Entry"
+          git push
