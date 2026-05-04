@@ -7,9 +7,16 @@
     <meta name="google-site-verification" content="gV-ZipfbYFniNXdVZ41YIcbrm2m-536_q1ELLlaK3SE" />
 </head>
 <body>
-    <div class="container">
+    <div id="login-screen" class="container">
+        <h1>Hydra Protocol</h1>
+        <p>Identify yourself, Researcher:</p>
+        <input type="text" id="username-input" placeholder="Username...">
+        <button onclick="startGame()">INITIALIZE</button>
+    </div>
+
+    <div id="game-container" class="container" style="display: none;">
         <h1>The Hydra Challenge</h1>
-        <p>Can you reach the end? Every chop makes it grow faster!</p>
+        <p>Logged in as: <span id="user-display" style="color: #4ecca3;"></span></p>
         
         <div id="hydra-display">
             <span id="heads">🐉🐉🐉</span>
@@ -20,10 +27,18 @@
             <p>Hydra Complexity: <span id="complexity">3</span></p>
         </div>
 
-        <button onclick="chop()">CHOP HEAD</button>
+        <button class="btn-bb" onclick="applyBusyBeaver()">BUSY BEAVER BOOST</button>
+        <button class="btn-chop" onclick="chop()">CHOP HEAD</button>
+        <button class="btn-save" onclick="saveRecord()">UPLOAD RECORD</button>
+        
+        <div class="leaderboard-box">
+            <h3>🏆 GLOBAL RANKINGS</h3>
+            <div id="leaderboard-content">
+                </div>
+        </div>
         
         <hr>
-        <a href="answer.html">How does this create a World Record number?</a>
+        <a href="answer.html">View the Record-Breaking Proof</a>
     </div>
     <script src="script.js"></script>
 </body>
